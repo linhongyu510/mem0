@@ -283,7 +283,7 @@ class SQLiteManager:
                     """
                     DELETE FROM messages WHERE session_scope = ? AND id NOT IN (
                         SELECT id FROM (
-                            SELECT id FROM messages WHERE session_scope = ? ORDER BY created_at DESC LIMIT 10
+                            SELECT id FROM messages WHERE session_scope = ? ORDER BY created_at DESC, rowid DESC LIMIT 10
                         )
                     )
                 """,
